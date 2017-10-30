@@ -1,6 +1,6 @@
 # CERES
 
-Code repository for recreating figures in the publication describing CERES.
+Code repository for reproducing figures in the publication describing CERES.
 
 Meyers, Bryan, *et al*. **Computational correction of copy number effect improves specificity of CRISPR–Cas9 essentiality screens in cancer cells.** *Nature Genetics.* 2017. [Article](https://doi.org/10.1038/ng.3984)
 
@@ -55,6 +55,8 @@ source("./R/Manu_CacheDatasets.R")
 ```
 
 ## Run Analysis Files
+
+As you may have noticed, this R project uses a directory structure and functions from the R package, [ProjectTemplate](http://projecttemplate.net/). The following command runs each R file in the `src/` directory. Each script roughly corresponds to one type of analysis in the paper, and can be run individually using `source()`. Many of the scripts take advantage of parallelization using the package `doMC`. The number of threads/cores used may be edited towards the top of each script which uses them.
 
 ```
 library(ProjectTemplate)
