@@ -49,7 +49,11 @@ cache_helper("wang_guide_dep", function() {
         left_join(sgrna_annotations) %>%
         group_by(CellLine, Guide) %>%
         summarise(logFC = mean(logFC, na.rm=T)) %>%
-        ungroup() %>% select(Guide, CellLine, logFC) %>% df.to.mat()
+        ungroup() %>%
+        group_by(CellLine) %>%
+        mutate(logFC = (logFC - median(logFC, na.rm=T)) /
+                   mad(logFC, na.rm=T)) %>%
+        select(Guide, CellLine, logFC) %>% df.to.mat()
 })
 
 
