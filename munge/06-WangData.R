@@ -54,6 +54,14 @@ cache_helper("wang_guide_dep", function() {
         mutate(logFC = (logFC - median(logFC, na.rm=T)) /
                    mad(logFC, na.rm=T)) %>%
         select(Guide, CellLine, logFC) %>% df.to.mat()
+
+    data_frame(CellLine=colnames(guide_dep),
+               Replicate=colnames(guide_dep)) %>%
+        write_tsv("./data/raw/wang_replicate_map.tsv")
+    write.csv(guide_dep, "./data/raw/wang_sgRNA_logFCnorm.csv")
+
+    return(guide_dep)
+
 })
 
 

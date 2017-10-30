@@ -15,8 +15,8 @@ load_ceres_outputs <- function(output_dir) {
     guide_activity_fit <-
         readRDS(file.path(output_dir, "sgrna_fit.rds"))
 
-    fit_summary <-
-        read.table(file.path(output_dir, "summary.txt"), header=T)
+    # fit_summary <-
+    #     read.table(file.path(output_dir, "summary.txt"), header=T)
 
     ceres_output <- list(gene_effect = gene_effect_fit %>%
                              mat.to.df("Gene", "CellLine", "Gene_Effect"),
@@ -27,8 +27,8 @@ load_ceres_outputs <- function(output_dir) {
                          cutting_effect = cutting_effect_fit %>%
                              filter(position == "end") %>%
                              select(CellLine = cell_line,
-                                    segment, slope, intercept),
-                         summary = fit_summary)
+                                    segment, slope, intercept))
+                         # summary = fit_summary)
 }
 
 load_ceres_results <- function(ceres_run_date, sub_dir, input_data,
@@ -229,10 +229,10 @@ load_ceres_inputs <- function(inputs_dir,
     } else {
         negctrl_dep <- NULL
     }
-    guide_locus_df <- readRDS(file.path(inputs_dir, "guide_locus_map3.Rds"))
-    locus_gene_df <- readRDS(file.path(inputs_dir, "locus_gene_map3.Rds"))
+    guide_locus_df <- readRDS(file.path(inputs_dir, "guide_locus.Rds"))
+    locus_gene_df <- readRDS(file.path(inputs_dir, "locus_gene.Rds"))
     locus_cn <- readRDS(file.path(inputs_dir, "locus_sample_cn.Rds"))
-    gene_ids <- readRDS(file.path(inputs_dir, "gene_id_table.Rds"))
+    # gene_ids <- readRDS(file.path(inputs_dir, "gene_id_table.Rds"))
 
     if (replicates) {
         replicate_map <- readRDS(file.path(inputs_dir, "replicate_map.Rds")) %>%
@@ -286,7 +286,7 @@ load_ceres_inputs <- function(inputs_dir,
         guide_locus = guide_locus_df %>% select(Guide, Locus) %>% distinct(),
         locus_gene = locus_gene_df %>% select(Locus, Gene) %>% distinct(),
         locus_cn = locus_cn_df,
-        gene_ids = gene_ids %>% distinct(GeneID, .keep_all=T),
+        # gene_ids = gene_ids %>% distinct(GeneID, .keep_all=T),
         replicate_map = replicate_map)
 
 }
