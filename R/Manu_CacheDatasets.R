@@ -49,7 +49,7 @@ wang_gene_level %>%
 
 ceres_input_gecko <- load_ceres_inputs(
     inputs_dir="./data/ceres_inputs/gecko/",
-    replicates=F)
+    replicates=T)
 ceres_output_gecko <- load_ceres_outputs(
     output_dir="./data/ceres_outputs/gecko/")
 
@@ -78,7 +78,7 @@ gecko_gene_level %>%
 
 ceres_input_avana <- load_ceres_inputs(
     inputs_dir="./data/ceres_inputs/avana/",
-    replicates=F)
+    replicates=T)
 ceres_output_avana <- load_ceres_outputs(
     output_dir="./data/ceres_outputs/avana/")
 
