@@ -56,5 +56,7 @@ for (figshare_file in figshare_article$files) {
 }
 
 
+library(ProjectTemplate)
+load.project()
 
 
