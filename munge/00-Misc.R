@@ -84,18 +84,18 @@ cache_helper("xpr", function() {
 
 
 cache_helper("cce_genes", function() {
-    hart_ctrls <- read_tsv("./data/raw/hart2014_seed_core_essentials.txt")
+    hart_ctrls <- read_tsv("./data/manual/hart2014_seed_core_essentials.txt")
     cce_genes <- hart_ctrls$`ConstitutiveCoreEssentials(CCE)` %>% str_subset("[A-Z0-9]+")
 })
 
 cache_helper("ne_genes", function() {
-    hart_ctrls <- read_tsv("./data/raw/hart2014_seed_core_essentials.txt")
+    hart_ctrls <- read_tsv("./data/manual/hart2014_seed_core_essentials.txt")
     ne_genes <- hart_ctrls$`Nonessential Genes (NE)` %>% str_subset("[A-Z0-9]+")
 })
 
 cache_helper("lineage_df", function() {
     lineage_pretty <- read_tsv("./data/manual/lineage_pretty.tsv")
-    read_tsv("./data/raw/ccle_lineages.tsv") %>%
+    read_tsv("./data/manual/ccle_lineages.tsv") %>%
         dplyr::rename(Lineage = lineage, CellLine = CCLE_ID) %>%
         left_join(lineage_pretty) %>%
         mutate(Lineage = ifelse(is.na(LineagePretty), Lineage, LineagePretty))
